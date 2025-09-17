@@ -1,0 +1,52 @@
+﻿<Page x:Class="Demka3.Pages.CheckProducts"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Demka3.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800" Background="White" MinHeight="450" MinWidth="800"
+      Title="CheckProducts">
+
+    <Grid>
+        <ListView x:Name="LVProducts" MouseDoubleClick="LVProducts_MouseDoubleClick">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="Black" BorderThickness="1">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                <TextBlock Text="{Binding ProductType.Title}" FontFamily="Gabriola" FontSize="20"/>
+                                <TextBlock Text=" | " FontFamily="Gabriola" FontSize="20"/>
+                                <TextBlock Text="{Binding Title}" FontFamily="Gabriola" FontSize="20" TextWrapping="Wrap"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                <TextBlock Text="{Binding Article}" FontFamily="Gabriola" FontSize="20"/>
+                            </StackPanel>
+
+                            <TextBlock Grid.Row="2" Grid.Column="0" Text="{Binding MinCostForPartner, StringFormat={}{0} ₽}" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Gabriola" FontSize="20"/>
+                            <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                <TextBlock Text="{Binding Wight, StringFormat={}{0} м}" FontFamily="Gabriola" FontSize="20"/>
+                            </StackPanel>
+
+                            <TextBlock Text="{Binding FinalCost, StringFormat={}{0} ₽}" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Gabriola" FontSize="20" Margin="15"/>
+
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>
