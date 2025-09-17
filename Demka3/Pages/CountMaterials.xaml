@@ -6,9 +6,27 @@
       xmlns:local="clr-namespace:Demka3.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="CountMaterials">
+      Title="CountMaterials" Background="White">
 
     <Grid>
-        
+        <ScrollViewer>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="Количество" FontSize="20" FontFamily="Gabriola"/>
+                <TextBox x:Name="CountBox" FontSize="20" FontFamily="Gabriola" Height="35" Width="600"/>
+                <ListView x:Name="LVMaterials">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <StackPanel Orientation="Horizontal">
+                                    
+                                </StackPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <Button x:Name="CountBtn" Click="CountBtn_Click" Foreground="White" Background="#2D6033" Content="Рассчитать" FontSize="20" FontFamily="Gabriola" Margin="0,10,0,0" Height="35" Width="160"/>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>
