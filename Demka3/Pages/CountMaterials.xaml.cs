@@ -19,8 +19,8 @@ namespace Demka3.Pages
 {
     public class ModelForCountMaterials
     {
-        public string title;
-        public int counter;
+        public string Title { get; set; }
+        public int Counter { get; set; }
     }
     /// <summary>
     /// Логика взаимодействия для CountMaterials.xaml
@@ -39,11 +39,11 @@ namespace Demka3.Pages
         public void MaterialsCount(int TypeProductID, int MaterialTypeID, int NumberOfProducts, decimal CountOnStorage, decimal BreakPercent, decimal ProductTypeKef, Deemka3Entities db)
         {
             ModelForCountMaterials material = new ModelForCountMaterials();
-            material.title = db.Materials.Where(x => x.MaterialType_ID == MaterialTypeID).Select(x => x.Title).FirstOrDefault();
-
+            var material_ = db.Materials.Where(x => x.MaterialType_ID == MaterialTypeID).FirstOrDefault();
+            material.Title = material_.Title;
             int MaterialsForOneProduct = Convert.ToInt32(Math.Ceiling(((BreakPercent * ProductTypeKef) + BreakPercent) * NumberOfProducts));
 
-            material.counter = MaterialsForOneProduct;
+            material.Counter = MaterialsForOneProduct;
             materials.Add(material);
         }
 
@@ -53,7 +53,7 @@ namespace Demka3.Pages
             var material = db.ProductsMaterial.Where(x => x.ProductID == product_.ID).ToList();
             foreach (var item in material)
             {
-                MaterialsCount(product_.ProductTypeID, item.MaterialID, Convert.ToInt32(CountBox.Text), item.Materials.Remains, item.Materials.MaterialsType.BreakPercent, product_.ProductType.ProductTypeCoef, db);
+                MaterialsCount(product_.ProductTypeID, item.Materials.MaterialType_ID, Convert.ToInt32(CountBox.Text), item.Materials.Remains, item.Materials.MaterialsType.BreakPercent, product_.ProductType.ProductTypeCoef, db);
             }
             LVMaterials.ItemsSource = materials;
         }

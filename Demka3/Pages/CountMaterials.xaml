@@ -18,8 +18,9 @@
                         <DataTemplate>
                             <Grid>
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{Binding title}"/>
-                                    <TextBlock Text="{Binding counter}"/>
+                                    <TextBlock Text="{Binding Title}" FontSize="20" FontFamily="Gabriola" Foreground="Black" HorizontalAlignment="Left"/>
+                                    <TextBlock Text="   "/>
+                                    <TextBlock Text="{Binding Counter}" FontSize="24" FontFamily="Gabriola" Foreground="Black"/>
                                 </StackPanel>
                             </Grid>
                         </DataTemplate>
